@@ -41,7 +41,7 @@ print_progress() {
 print_progress 1 "Install dependent packages..."
 sudo apt-get update
 sudo apt-get -y install g++-4.8                                               \
-  wiringpi libdbus-1-dev glib-2.0 libdbus-glib-1-2 bison yacc                 \
+  wiringpi libdbus-1-dev glib-2.0 libdbus-glib-1-2 bison byacc                \
   libdbus-glib-1-2-dbg libdbus-glib-1-dev zip sqlite3 libsqlite3-dev cmake    \
   libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev git  \
   python-dev python-numpy libjpeg-dev libpng-dev libtiff-dev libjasper-dev    \
@@ -136,6 +136,11 @@ sudo npm install -g node-gyp
 cd ${ANT_REPO_DIR}/dep/gst-rpicamsrc
 ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/
 make
+sudo make install
+
+# Step 13. Install Fast Ariticifial Neural Network(FANN)
+cd ${ANT_REPO_DIR}/dep/fann
+cmake .
 sudo make install
 
 WARN_COLO="\033[31;47m"
